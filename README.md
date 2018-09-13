@@ -1,6 +1,17 @@
 # steady
-Test for Steady
+SDET challenge for Steady
 
+## Requirements
 Firefox
-PhantomJS
-https://github.com/mozilla/geckodriver/releases/download/v0.21.0/geckodriver-v0.21.0-linux64.tar.gz
+Ruby 2.5
+bundler gem
+- `gem install bundler`
+Mozilla geckodriver 
+- https://github.com/mozilla/geckodriver/releases
+- **Must be in $PATH**
+
+## Setup
+1. Run `bundle install --deployment`
+
+##Known Issues
+Tests do not pass with phantomjs/poltergeist ("Find a Hotel" dropdown doesn't appear)
