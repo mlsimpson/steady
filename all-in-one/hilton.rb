@@ -42,17 +42,21 @@ save_screenshot('./1-Paris_dropdown.png')
 
 firstlocation = page.find('ul[class="jq-ui-autocomplete"]').find('li[id="location0"]').text
 
+find('ul.jq-ui-autocomplete').should have_content(firstlocation)
 puts "First location: #{firstlocation}"
 
 fill_in('hotelSearchOneBox', :with => firstlocation)
 save_screenshot('./2-Paris_completion.png')
 
 click_button('Open calendar', match: :first)
-save_screenshot('./3-Arrival_calendar.png')
 
 # Method 1: Enter text in Arrival & Departure inputs
 # Future-proof dates instead of hardcoding
 tomorrow = (Date.today + 1).strftime('%d %b %Y')
 nextweek = (Date.today + 8).strftime('%d %b %Y')
 
-#ui-datepicker-div
+fill_in('checkin', :with => tomorrow)
+fill_in('checkout', :with => nextweek)
+save_screenshot('./3-Arrival_Departure.png')
+
+#expect(page).to have_css('ui-datepicker-div', visible: false)
