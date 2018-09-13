@@ -3,10 +3,14 @@
 
 ## Requirements
 Linux
+
 Firefox
+
 Ruby 2.5
+
 bundler gem:
 - `gem install bundler`
+
 Mozilla geckodriver:
 - https://github.com/mozilla/geckodriver/releases
 - *Must be in $PATH*
