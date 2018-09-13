@@ -2,6 +2,7 @@
 **SDET challenge for Steady**
 
 ## Requirements
+Linux
 Firefox
 Ruby 2.5
 bundler gem:
@@ -12,6 +13,7 @@ Mozilla geckodriver:
 
 ## Setup
 1. Run `bundle install --deployment`
+2. Run `run_tests.sh`
 
 ## Known Issues
 Tests do not pass with phantomjs/poltergeist ("Find a Hotel" dropdown doesn't appear)
