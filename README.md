@@ -25,6 +25,8 @@ Tests do not pass with phantomjs/poltergeist ("Find a Hotel" dropdown doesn't ap
 ## Motivation
 Per the SDET challenge, it makes sense to separate both requests into specific test cases.
 
+RSpec greatly helped, particularly with `expect` assertions.
+
 I have experience with 'baseline' testing, where the output of a test case is validated against a known good state, so I adapted that to these cases.
 
 Using the DSL module greatly helped configuration and the DRY principle.
