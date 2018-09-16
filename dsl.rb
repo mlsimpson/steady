@@ -1,6 +1,19 @@
 module DSL
+  require 'date'
+  require 'rspec'
+  require 'capybara'
+  require 'capybara/dsl'
+  require_relative 'dsl.rb'
+
+  include RSpec::Matchers
+  include DSL
   # Suppress global scope warning for Capybara::DSL
   include Capybara::DSL
+
+  Capybara.current_driver = :selenium
+  Capybara.run_server = false
+  Capybara.app_host = 'http://hiltonhonors3.hilton.com'
+  page = Capybara.page
 
   MINOFFERS = 5
 
@@ -41,20 +54,19 @@ module DSL
     save_screenshot("./#{index}-calendar.png")
   end
 
-	## TODO: fix me!
-	## https://stackoverflow.com/questions/7612038/with-capybara-how-do-i-switch-to-the-new-window-for-links-with-blank-targets
-	#def apr(cardoffers)
-	#       puts cardoffers.size
-	#       (cardoffers.size).times do |i|
-	#               root_window = current_window
-	#               new_window = window_opened_by { cardoffers[i].click_link('*Rates and Fees') }
-	#               within_window new_window do
-	#                       expect(page).to have_content('Annual Percentage Rate (APR) for Purchases')
-	#               end
-	#               new_window.close
-	#               switch_to_window root_window
-	#       end
-	#       return true
-	#end
+  ## TODO: fix me!
+  ## https://stackoverflow.com/questions/7612038/with-capybara-how-do-i-switch-to-the-new-window-for-links-with-blank-targets
+  #def apr(cardoffers)
+  #       puts cardoffers.size
+  #       (cardoffers.size).times do |i|
+  #               root_window = current_window
+  #               new_window = window_opened_by { cardoffers[i].click_link('*Rates and Fees') }
+  #               within_window new_window do
+  #                       expect(page).to have_content('Annual Percentage Rate (APR) for Purchases')
+  #               end
+  #               new_window.close
+  #               switch_to_window root_window
+  #       end
+  #       return true
+  #end
 end
-

@@ -1,19 +1,9 @@
 #!/usr/bin/env ruby
 
-require 'awesome_print'
-require 'date'
-require 'rspec'
-require 'capybara'
-require 'capybara/dsl'
 require_relative 'dsl.rb'
 
 include RSpec::Matchers
 include DSL
-
-Capybara.current_driver = :selenium
-Capybara.run_server = false
-Capybara.app_host = 'http://hiltonhonors3.hilton.com'
-page = Capybara.page
 
 puts 'TEST START: Validating hotel search, with a 7 day stay'
 visit '/en/index.html'
@@ -28,7 +18,6 @@ fill_in('hotelSearchOneBox', :with => 'Paris')
 expect(page).to have_css('ul[class="jq-ui-autocomplete"]')
 save_screenshot('./search-hotels_Paris_dropdown.png')
 
-#firstlocation = page.find('ul[class="jq-ui-autocomplete"]').find('li[id="location0"]').text
 firstlocation = find('ul[class="jq-ui-autocomplete"]').find('li[id="location0"]').text
 
 find('ul.jq-ui-autocomplete').should have_content(firstlocation)
@@ -53,7 +42,6 @@ save_screenshot('./search-hotels_easy-calendar.png')
 
 # Method 2 (the hard way): Click on dates in calendar widgets
 # Months on the Hilton calendar widget are 0-indexed
-
 datepicker('arrival')
 datepicker('departure')
 
